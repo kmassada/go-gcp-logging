@@ -21,7 +21,9 @@ gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/
 ## Build
 
 ```shell
-gcloud builds submit --config cloudbuild.yaml .
+gcloud builds submit \
+    --substitutions _REPRO_PREFIX=makz-labs TAG_NAME=latest \
+    --config cloudbuild.yaml .
 ```
 
 ## Application credentials
