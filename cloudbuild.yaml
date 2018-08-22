@@ -1,6 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/go'
   args: ['get', '-u', 'cloud.google.com/go/logging']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['get', '-u', 'google.golang.org/api/option']
   env: ['PROJECT_ROOT=app']
 - name: 'gcr.io/cloud-builders/go'
   args: ['build', 'app']
