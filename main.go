@@ -24,7 +24,7 @@ func main() {
 	
 	// context
 	ctx := context.Background()
-	client, err := logging.NewClient(ctx, "go-gcp-logging")
+	client, err := logging.NewClient(ctx,  os.Getenv("PROJECT_ID"))
 	if err != nil {
 		panic(err)
 	}
