@@ -37,7 +37,7 @@ func main() {
 	lg := client.Logger("my-log")
 
 	// Add entry to log buffer
-	j := []byte(`{"Name": "Bob"`+os.Getenv("HOSTNAME")+`, "Count": 3}`)
+	j := []byte(`{"Name": "Bob`+os.Getenv("HOSTNAME")+`", "Count": 3}`)
 
 
 	lg.Log(logging.Entry{
