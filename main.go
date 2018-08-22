@@ -18,7 +18,6 @@ func printHeader(w http.ResponseWriter, r *http.Request) {
 
 	response := Response{r.RemoteAddr, r.Header}
 	json.NewEncoder(w).Encode(response)
-	lg.Log(logging.Entry{Payload: response})
 
 }
 func main() {
