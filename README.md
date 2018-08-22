@@ -2,7 +2,7 @@
 
 ## Build
 
-```
+```shell
 export APPLICATION=go-gcp-logging
 export PROJECT_ID=makz-support-eap
 export REPO_PREFIX=makz-labs
