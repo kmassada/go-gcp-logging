@@ -15,12 +15,12 @@ gcloud projects add-iam-policy-binding $PROJECT \
 
 ## Create service account key and activate it
 gcloud iam service-accounts keys create \
-    /home/$USER/$APPLICATION-$SA-key.json \
+    /home/$USER/$APPLICATION-sa-key.json \
     --iam-account $APP_SA_EMAIL
 
 ## Create configmap
 kubectl create configmap project-id --from-literal "project-id=${PROJECT}"
 kubectl create configmap $APPLICATION-sa --from-literal "sa-email=${APP_SA_EMAIL}"
-kubectl create secret generic $APPLICATION --from-file /home/$USER/$APPLICATION-$SA-key.json
+kubectl create secret generic $APPLICATION --from-file /home/$USER/$APPLICATION-sa-key.json
 
 envsubst < deployment.template.yaml > deployment.yaml
