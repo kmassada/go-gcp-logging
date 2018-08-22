@@ -5,7 +5,11 @@ steps:
 - name: 'gcr.io/cloud-builders/go'
   args: ['build', 'app']
   env: ['PROJECT_ROOT=app']
+- name: 'ubuntu'
+  args: ['chmod', '+x', 'app']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/makz-labs/go-gcp-logging', '.' ]
 artifacts:
   objects:
-    location: 'gs://makz-support-labs-artifacts/${PWD##*/}'
-    paths: ['app-${PWD##*/}']
+    location: 'gs://makz-support-labs-artifacts/go-gcp-logging'
+    paths: ['app']
