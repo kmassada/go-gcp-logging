@@ -21,6 +21,13 @@ func printHeader(w http.ResponseWriter, r *http.Request) {
 
 }
 func main() {
+	
+	// context
+	ctx := context.Background()
+	client, err := logging.NewClient(ctx, "go-gcp-logging")
+	if err != nil {
+		panic(err)
+	}
 
 	// Initialize a logger
 	lg := client.Logger("my-log")
