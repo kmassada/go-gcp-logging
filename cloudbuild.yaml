@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=app']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['build', 'app']
+  env: ['PROJECT_ROOT=app']
+artifacts:
+  objects:
+    location: 'gs://makz/makz-support-eap/${PWD##*/}'
+    paths: ['app-${PWD##*/}']
