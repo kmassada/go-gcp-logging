@@ -9,6 +9,8 @@ steps:
   args: ['chmod', '+x', 'app']
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/makz-labs/go-gcp-logging', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/makz-labs/go-gcp-logging'
 artifacts:
   objects:
     location: 'gs://makz-support-labs-artifacts/go-gcp-logging'
