@@ -1,12 +1,26 @@
 # go-gcp-looging
 
+## Build pre-reqs
+
+```shell
+_REPO_PREFIX: makz-labs
+```
+
+therefore you need a Cloud Storage bucket with this prefix
+
+```shell
+gs://${_REPO_PREFIX}/
+```
+
+and you need a gcr prefix that matches this:
+
+```shell
+gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/
+```
+
 ## Build
 
 ```shell
-export APPLICATION=go-gcp-logging
-export PROJECT_ID=makz-support-eap
-export REPO_PREFIX=makz-labs
-
 gcloud builds submit --config cloudbuild.yaml .
 ```
 
@@ -17,6 +31,7 @@ This section, I create a service account, download a key for it, this key will b
 ### Create service account
 
 ```shell
+export APPLICATION=go-gcp-logging
 export APP_SA_NAME=gke-$APPLICATION-sa
 gcloud iam service-accounts create $APP_SA_NAME --display-name "GKE $APPLICATION Application Service Account"
 export APP_SA_EMAIL=`gcloud iam service-accounts list --format='value(email)' --filter='displayName:$APPLICATION Application Service Account'`
