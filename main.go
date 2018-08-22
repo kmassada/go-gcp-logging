@@ -34,7 +34,8 @@ func main() {
 	lg := client.Logger("my-log")
 
 	// Add entry to log buffer
-	lg.Log(logging.Entry{Payload: "something happened!"})
+	j := []byte(`{"Name": "Bob", "Count": 3}`)
+	lg.Log(logging.Entry{Payload: json.RawMessage(j)})
 
 	// HTTP handler
 	http.HandleFunc("/", printHeader)
