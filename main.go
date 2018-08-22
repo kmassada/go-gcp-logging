@@ -26,8 +26,8 @@ func main() {
 	// context
 	ctx := context.Background()
 	client, err := logging.NewClient(ctx, 
-		// option.WithCredentialsFile(os.Getenv("APP_CREDENTIAL")),
-		os.Getenv("PROJECT_ID"))
+		os.Getenv("PROJECT_ID"),
+		option.WithCredentialsFile(os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")))
 	if err != nil {
 		panic(err)
 	}
