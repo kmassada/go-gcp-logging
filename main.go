@@ -53,7 +53,7 @@ func main() {
 	n := bytes.IndexByte(j, 0)
 
 	lg.Log(logging.Entry{
-		Payload: json.RawMessage([]byte(`{"Data": `+ string(j[:n]) +`}`)),
+		Payload: json.RawMessage([]byte(`{"Data": `+ string(j[:n-1]) +`}`)),
 		Severity: logging.Critical,
 	})
 
