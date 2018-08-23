@@ -44,13 +44,16 @@ func main() {
 	message := fmt.Sprintf(`{"Data": %s}`, json.RawMessage(j))
 	stdlog.Output(0, message)
 
-	message = []byte(`{"Data": `+json.RawMessage(j)+`}`)
-	stdlog.Output(0, json.RawMessage(message))
-
 	lg.Log(logging.Entry{
 		Payload: message,
 		Severity: logging.Critical,
 	})
+
+	lg.Log(logging.Entry{
+		Payload: json.RawMessage([]byte(`{"Data": `+json.RawMessage(j)+`}`)),
+		Severity: logging.Critical,
+	})
+
 
 	// HTTP handler
 	http.HandleFunc("/", printHeader)
