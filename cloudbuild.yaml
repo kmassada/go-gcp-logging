@@ -11,7 +11,7 @@ steps:
   args: [ 'build', '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}', '.' ]
 images:
 - 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}'
-tags: [$TAG_NAME]
+tags: [$TAG_NAME, 'latest']
 substitutions:
   _REPO_PREFIX: makz-labs
 artifacts:
