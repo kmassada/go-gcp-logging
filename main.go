@@ -44,7 +44,7 @@ func main() {
 	message := fmt.Sprintf("Data: %s", json.RawMessage(j))
 	stdlog.Output(0, message)
 
-	message := fmt.Sprintf("{Data: %s}", json.RawMessage(j))
+	message = fmt.Sprintf("{Data: %s}", json.RawMessage(j))
 	stdlog.Output(0, message)
 
 	lg.Log(logging.Entry{
