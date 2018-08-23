@@ -8,10 +8,14 @@ steps:
 - name: 'ubuntu'
   args: ['chmod', '+x', 'app']
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}', '.' ]
+  args: [ 'build', 
+  '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}:$TAG_NAME', 
+  '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}:$REVISION_ID', 
+  '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}', 
+  '.' ]
 images:
 - 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}'
-tags: [$TAG_NAME, $REVISION_ID, 'latest']
+tags: [$TAG_NAME, $REVISION_ID, '$REPO_NAME']
 substitutions:
   _REPO_PREFIX: makz-labs
 artifacts:
