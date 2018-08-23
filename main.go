@@ -44,9 +44,6 @@ func main() {
 	message := fmt.Sprintf(`{"Data": %s}`, json.RawMessage(j))
 	stdlog.Output(0, message)
 
-	message = `{"Data": `+ json.RawMessage(j)+`}`
-	stdlog.Output(0, message)
-
 	message = []byte(`{"Data": `+json.RawMessage(j)+`}`)
 	stdlog.Output(0, json.RawMessage(message))
 
