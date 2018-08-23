@@ -9,7 +9,6 @@ import (
 	"os"
 	"fmt"
 	stdlog "log"
-	"bytes"
 )
 
 type Response struct {
@@ -40,9 +39,9 @@ func main() {
 	lg := client.Logger("my-log")
 
 	// Add entry to log buffer
-	j := []byte(`{"Hostname": "`+os.Getenv("HOSTNAME")+`", "Count": 3}`)
+	j := []byte(`{"Data": {"Hostname": "`+os.Getenv("HOSTNAME")+`", "Count": 3}}`)
 
-	message := fmt.Sprintf(`{"Data": %s}`, json.RawMessage(j))
+	message := fmt.Sprintf(`%s`, json.RawMessage(j))
 	stdlog.Output(0, message)
 
 	lg.Log(logging.Entry{
@@ -50,10 +49,8 @@ func main() {
 		Severity: logging.Critical,
 	})
 
-	n := bytes.IndexByte(j, 0)
-
 	lg.Log(logging.Entry{
-		Payload: json.RawMessage([]byte(`{"Data": `+ string(j[:n-1]) +`}`)),
+		Payload: json.RawMessage(j),
 		Severity: logging.Critical,
 	})
 
