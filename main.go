@@ -44,6 +44,8 @@ func main() {
 	message := fmt.Sprintf(`%s`, json.RawMessage(j))
 	stdlog.Output(0, message)
 
+	fmt.Println(message)
+
 	lg.Log(logging.Entry{
 		Payload: message,
 		Severity: logging.Critical,
