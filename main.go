@@ -9,6 +9,7 @@ import (
 	"os"
 	"fmt"
 	stdlog "log"
+	"bytes"
 )
 
 type Response struct {
@@ -50,7 +51,7 @@ func main() {
 	})
 
 	n := bytes.IndexByte(j, 0)
-	
+
 	lg.Log(logging.Entry{
 		Payload: json.RawMessage([]byte(`{"Data": `+ string(j[:n]) +`}`)),
 		Severity: logging.Critical,
