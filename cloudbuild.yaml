@@ -12,7 +12,7 @@ steps:
 images:
 - 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}'
 tags:
-  [$TAG_NAME]
+  [${TAG_NAME}]
 substitutions:
   _REPO_PREFIX: makz-labs
 artifacts:
