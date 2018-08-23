@@ -50,7 +50,7 @@ func main() {
 	})
 
 	lg.Log(logging.Entry{
-		Payload: json.RawMessage([]byte(`{"Data": `+ j +`}`)),
+		Payload: json.RawMessage([]byte(`{"Data": `+ string(j[:n]) +`}`)),
 		Severity: logging.Critical,
 	})
 
