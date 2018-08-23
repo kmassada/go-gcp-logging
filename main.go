@@ -7,6 +7,7 @@ import (
 	"google.golang.org/api/option"
 	"context"
 	"os"
+	"fmt"
 	stdlog "log"
 )
 
