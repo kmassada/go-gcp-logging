@@ -16,12 +16,20 @@ type Response struct {
 	Headers http.Header
 }
 
-func printHeader(w http.ResponseWriter, r *http.Request) {
+type Server struct {
+	lg	 *logging.Logger
+}
+
+func (s *Server) printHeader(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 
 	response := Response{r.RemoteAddr, r.Header}
 	json.NewEncoder(w).Encode(response)
+	s.lg.Log(logging.Entry{
+		Payload: response,
+		Severity: logging.Info,
+	})
 
 }
 func main() {
@@ -37,6 +45,8 @@ func main() {
 
 	// Initialize a logger
 	lg := client.Logger("my-log")
+
+	s := Server{lg}
 
 	// Add entry to log buffer
 	j := []byte(`{"Data": {"Hostname": "`+os.Getenv("HOSTNAME")+`", "Count": 3}}`)
@@ -58,7 +68,7 @@ func main() {
 
 
 	// HTTP handler
-	http.HandleFunc("/", printHeader)
+	http.HandleFunc("/", s.printHeader)
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		panic(err)
 	}
