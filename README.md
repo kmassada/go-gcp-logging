@@ -12,7 +12,7 @@ therefore you need a Cloud Storage bucket with this prefix
 gs://${_REPO_PREFIX}/
 ```
 
-and you need a gcr prefix that matches this:
+and you need a gcr prefix that matches this
 
 ```shell
 gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/
