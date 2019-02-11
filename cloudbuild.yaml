@@ -13,6 +13,7 @@ steps:
   '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}:$SHORT_SHA', 
   '-t', 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}', 
   '.' ]
+  env: ['TAG_NAME=auto']
 images:
 - 'gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}'
 tags: [$TAG_NAME, $REVISION_ID, '$REPO_NAME']
