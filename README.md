@@ -51,9 +51,9 @@ PPLICATION' Application Service Account'`
 ### Bind service account policy
 
 ```shell
-export PROJECT=`gcloud config get-value project`
+export PROJECT_ID=`gcloud config get-value project`
 
-gcloud projects add-iam-policy-binding $PROJECT \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member=serviceAccount:${APP_SA_EMAIL} \
     --role=roles/logging.logWriter
 ```
@@ -73,7 +73,7 @@ In this section I create configmaps from the variables we've been gathering to s
 ### Create configmap
 
 ```shell
-kubectl create configmap project-id --from-literal "project-id=${PROJECT}"
+kubectl create configmap project-id --from-literal "project-id=${PROJECT_ID}"
 kubectl create configmap $APPLICATION-sa --from-literal "sa-email=${APP_SA_EMAIL}"
 kubectl create secret generic $APPLICATION --from-file /home/$USER/$APPLICATION-sa-key.json
 ```
