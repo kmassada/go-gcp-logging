@@ -3,7 +3,9 @@
 ## Build pre-reqs
 
 ```shell
-_REPO_PREFIX: makz-labs
+export _REPO_PREFIX=makz-labs
+export APPLICATION=go-gcp-logging
+export REPO_NAME=$APPLICATION
 ```
 
 therefore you need a Cloud Storage bucket with this prefix
@@ -41,7 +43,6 @@ This section, I create a service account, download a key for it, this key will b
 ### Create service account
 
 ```shell
-export APPLICATION=go-gcp-logging
 export APP_SA_NAME=gke-$APPLICATION-sa
 gcloud iam service-accounts create $APP_SA_NAME --display-name "GKE $APPLICATION Application Service Account"
 export APP_SA_EMAIL=`gcloud iam service-accounts list --format='value(email)' --filter='displayName:GKE '$A

@@ -15,7 +15,7 @@ spec:
         run: ${APPLICATION}
     spec:
       containers:
-      - image: nginx
+      - image: gcr.io/${PROJECT_ID}/${_REPO_PREFIX}/${REPO_NAME}:latest
         name: ${APPLICATION}
         env:
         - name: "GOOGLE_APPLICATION_CREDENTIALS"
