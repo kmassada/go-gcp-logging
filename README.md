@@ -32,7 +32,7 @@ When running in cloudshell we manually set our substitution variables.
 
 ```shell
 gcloud builds submit \
-    --substitutions _REPO_PREFIX=makz-labs,REPO_NAME=go-gcp-logging,TAG_NAME=cli,SHORT_SHA=clisha \
+    --substitutions _REPO_PREFIX=$_REPO_PREFIX,REPO_NAME=$REPO_NAME,TAG_NAME=cli,SHORT_SHA=clisha \
     --config cloudbuild.yaml
 ```
 
@@ -45,8 +45,7 @@ This section, I create a service account, download a key for it, this key will b
 ```shell
 export APP_SA_NAME=gke-$APPLICATION-sa
 gcloud iam service-accounts create $APP_SA_NAME --display-name "GKE $APPLICATION Application Service Account"
-export APP_SA_EMAIL=`gcloud iam service-accounts list --format='value(email)' --filter='displayName:GKE '$A
-PPLICATION' Application Service Account'`
+export APP_SA_EMAIL=`gcloud iam service-accounts list --format='value(email)' --filter='displayName:GKE '$APPLICATION' Application Service Account'`
 ```
 
 ### Bind service account policy
